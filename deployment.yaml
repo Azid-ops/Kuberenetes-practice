@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
       - name: nest-container
-        image: mahadali123/nest-app:v3
-        imagePullPolicy: IfNotPresent
+        image: mahadali123/nest-app:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
         resources:
