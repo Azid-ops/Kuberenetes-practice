@@ -8,7 +8,7 @@ export class AppController {
   @Get('hello') // Ye full path ban gaya: /api/hello
   getHello(): any {
     return { 
-      message: "Hello from NestJS!",
+      message: "Hello from NestJS and probing!",
       status: "success",
       timestamp: new Date().toISOString()
     };

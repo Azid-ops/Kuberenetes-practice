@@ -6,6 +6,12 @@ metadata:
     app: nest-app
 spec:
   replicas: 3
+  # Zero-downtime deployment ke liye rolling update strategy
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
   selector:
     matchLabels:
       app: nest-app
@@ -20,7 +26,18 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
+        # Application ke "Ready" hone ka wait karega
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
         resources:
           limits:
             cpu: "500m"
             memory: "256Mi"
+          # Autoscaling ke liye requests zaroori hain
+          requests:
+            cpu: "200m"
+            memory: "128Mi"

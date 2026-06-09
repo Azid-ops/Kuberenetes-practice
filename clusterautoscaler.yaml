@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cluster-autoscaler
+  namespace: kube-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cluster-autoscaler
+  template:
+    metadata:
+      labels:
+        app: cluster-autoscaler
+    spec:
+      containers:
+      - image: registry.k8s.io/autoscaling/cluster-autoscaler:v1.30.0
+        name: cluster-autoscaler
+        command:
+          - ./cluster-autoscaler
+          - --nodes=3:10:autoscaling-group-name # Min:Max:GroupName
+          - --cloud-provider=aws # Ya gce, azure
