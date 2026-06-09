@@ -24,3 +24,6 @@ minikube/
 # OS files
 .DS_Store
 Thumbs.db
+
+gitkey
+dockerhubtoken
