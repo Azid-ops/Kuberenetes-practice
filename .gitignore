@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+dist/
+build/
+npm-debug.log
+.eslintcache
+
+# Environment variables
+.env
+
+# Kubernetes & Docker
+*.log
+*.tmp
+*.bak
+minikube/
+.minikube/
+
+# IDE/Editor folders
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
